@@ -1,0 +1,40 @@
+:root {
+  --bg-color: rgb(144, 144, 255);
+  /* use a readable alpha (0.9) and provide a fallback */
+  --text-color: hwb(242 22% 14% / 0.9);
+  --text-color-fallback: rgba(10, 10, 60, 0.9);
+  --font-main: "Inter", sans-serif;
+  --space: 1rem;
+}
+
+body {
+  background-color: var(--bg-color);
+  /* use the hwb value if supported, otherwise the rgba fallback */
+  color: var(--text-color, var(--text-color-fallback));
+  font-family: var(--font-main);
+  padding: var(--space);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* make sure this matches your HTML id (use #main if your id is lowercase) */
+#main ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space);
+  list-style: none;
+  padding: 0;
+  margin: 0; /* reset default margin */
+}
+
+@media (min-width: 600px) {
+  #main ul { flex-direction: row; }
+  body { padding: calc(var(--space) * 2); }
+}
+
+@media (min-width: 950px) {
+  body { max-width: 1440px; margin: 0 auto; }
+}
